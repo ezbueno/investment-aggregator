@@ -1,9 +1,8 @@
 package dev.ezandro.investmentaggregator.repository;
 
-import dev.ezandro.investmentaggregator.entity.Account;
+import dev.ezandro.investmentaggregator.entity.AccountStock;
+import dev.ezandro.investmentaggregator.entity.AccountStockId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.UUID;
-
-public interface AccountRepository extends JpaRepository<Account, UUID> {
+public interface AccountStockRepository extends JpaRepository<AccountStock, AccountStockId> {
 }
