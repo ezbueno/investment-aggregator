@@ -1,8 +1,10 @@
 package dev.ezandro.investmentaggregator.controller;
 
+import dev.ezandro.investmentaggregator.dto.AccountResponseDTO;
+import dev.ezandro.investmentaggregator.dto.CreateAccountDTO;
+import dev.ezandro.investmentaggregator.dto.CreateUserDTO;
 import dev.ezandro.investmentaggregator.dto.UpdateUserDTO;
 import dev.ezandro.investmentaggregator.entity.User;
-import dev.ezandro.investmentaggregator.dto.CreateUserDTO;
 import dev.ezandro.investmentaggregator.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,5 +49,18 @@ public class UserController {
     public ResponseEntity<Void> deleteUserById(@PathVariable(value = "userId") String userId) {
         this.userService.deleteUserById(userId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(value = "/{userId}/accounts")
+    public ResponseEntity<Void> createAccount(@PathVariable(value = "userId") String userId,
+                                              @RequestBody CreateAccountDTO createAccountDTO) {
+        this.userService.createAccount(userId, createAccountDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/{userId}/accounts")
+    public ResponseEntity<List<AccountResponseDTO>> listAccounts(@PathVariable(value = "userId") String userId) {
+        this.userService.listAccounts(userId);
+        return ResponseEntity.ok(this.userService.listAccounts(userId));
     }
 }
