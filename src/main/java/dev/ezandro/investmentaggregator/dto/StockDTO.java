@@ -1,2 +1,4 @@
-package dev.ezandro.investmentaggregator.dto;public record StockDTO() {
+package dev.ezandro.investmentaggregator.dto;
+
+public record StockDTO(double regularMarketPrice) {
 }
